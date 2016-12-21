@@ -17,6 +17,7 @@
 */
 
 #include "TXLib.h"
+#include "stdlib.h"
 
 int main()
 {
@@ -30,16 +31,23 @@ int main()
     txBitBlt(txDC(), 0, 0, 400, 225, colorTable, 0, 0);
     COLORREF color;
 
-    txMessageBox ("Найди мне цвет в позиции 1,1", "Color-Game");
+    int x = floor((3 * rand())/RAND_MAX);
+    int y = floor((7 * rand())/RAND_MAX);
+
+    char mess[100] = "";
+    sprintf(mess, "Find color in position %d, %d", x + 1, y + 1);
+    txMessageBox (mess, "Color-Game");
 
     int score = 0;
 
     while(1)
     {
         color = txGetPixel(txMouseX(),txMouseY());
-        if (color == ary[1][1])
+        if (color == ary[x][y])
         {
-            cout << "You find it with score: " << score;
+            char messfinish[100] = "";  //Вывод результата игры
+            sprintf(messfinish, "You find it with score: %d", score);
+            txMessageBox (messfinish, "Color-Game");
             break;
         }
         score++;
