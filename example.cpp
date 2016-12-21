@@ -18,40 +18,38 @@
 
 #include "TXLib.h"
 #include "stdlib.h"
+#include "data.h"
+#include "windows.h"
 
 int main()
 {
-    int ary[3][7] =  {
-		{ RGB(164,196,0), RGB(96,169,23)  , RGB(0,138,0)    , RGB(0,171,169)  , RGB(27,161,226), RGB(0,80,239) , RGB(106,0,255) },
-		{ RGB(170,0,255), RGB(244,114,208), RGB(216,0,115)  , RGB(162,0,37)   , RGB(229,20,0)  , RGB(250,104,0), RGB(240,163,10)},
-		{ RGB(227,200,0), RGB(130,90,44)  , RGB(109,135,100), RGB(100,118,135), RGB(118,96,138), RGB(160,82,45), RGB(148,70,34) }
-    };
     txCreateWindow(400,225);
     HDC colorTable = txLoadImage("colors.bmp");
     txBitBlt(txDC(), 0, 0, 400, 225, colorTable, 0, 0);
-    COLORREF color;
+	int unsigned color;
 
-    int x = floor((3 * rand())/RAND_MAX);
-    int y = floor((7 * rand())/RAND_MAX);
+    // Ignore C4244 warning!
+	int unsigned xTable = data::rnd(3);
+    int unsigned yTable = data::rnd(3);
+	// =====================
 
     char mess[100] = "";
-    sprintf(mess, "Find color in position %d, %d", x + 1, y + 1);
+    sprintf_s(mess, "Find color in position %d, %d", xTable + 1, yTable + 1);
     txMessageBox (mess, "Color-Game");
 
-    int score = 0;
+    int timeInMils = 0;
+	char messfinish[100] = "";
 
-    while(1)
+	while(1)
     {
         color = txGetPixel(txMouseX(),txMouseY());
-        if (color == ary[x][y])
+        if (color == data::ary[xTable][yTable])
         {
-            char messfinish[100] = "";  //Вывод результата игры
-            sprintf(messfinish, "You find it with score: %d", score);
-            txMessageBox (messfinish, "Color-Game");
-            break;
+            sprintf_s(messfinish, data::scoreMsg, timeInMils);
+            txMessageBox (messfinish, data::progName);
+			exit(0);
         }
-        score++;
+		timeInMils++;
+		txSleep(1);
     }
-
-
 }
