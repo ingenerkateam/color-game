@@ -19,22 +19,16 @@
 #include "TXLib.h"
 #include "stdlib.h"
 #include "data.h"
-#include "windows.h"
 
 int main()
 {
-    txCreateWindow(400,225);
-    HDC colorTable = txLoadImage("colors.bmp");
-    txBitBlt(txDC(), 0, 0, 400, 225, colorTable, 0, 0);
+    txCreateWindow(data::Info::Vars::windowSizes[0], data::Info::Vars::windowSizes[1]);
+    
+    txBitBlt(txDC(), 0, 0, data::Info::Vars::tableSizes[0], data::Info::Vars::tableSizes[1], data::Info::Vars::colorTable, 0, 0);
 	int unsigned color;
 
-    // Ignore C4244 warning!
-	int unsigned xTable = data::rnd(3);
-    int unsigned yTable = data::rnd(3);
-	// =====================
-
     char mess[100] = "";
-    sprintf_s(mess, "Find color in position %d, %d", xTable + 1, yTable + 1);
+    sprintf_s(mess, "Find color in position %d, %d", data::Info::Vars::Table::x + 1, data::Info::Vars::Table::y + 1);
     txMessageBox (mess, "Color-Game");
 
     int timeInMils = 0;
@@ -43,10 +37,10 @@ int main()
 	while(1)
     {
         color = txGetPixel(txMouseX(),txMouseY());
-        if (color == data::ary[xTable][yTable])
+        if (color == data::Info::Vars::ary[data::Info::Vars::Table::x][data::Info::Vars::Table::y])
         {
-            sprintf_s(messfinish, data::scoreMsg, timeInMils);
-            txMessageBox (messfinish, data::progName);
+            sprintf_s(messfinish, data::Msg::scoreMsg, timeInMils);
+            txMessageBox (messfinish, data::Msg::progName);
 			exit(0);
         }
 		timeInMils++;

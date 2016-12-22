@@ -21,9 +21,35 @@
 class data
 {
 public:
-	static int unsigned ary[3][7];
-	static const char* progName;
-	static const char* scoreMsg;
-	static int unsigned rnd(int num);
+	class Info
+	{
+	public:;
+		   class Func
+		   {
+		   public:;
+				  static int unsigned rnd(int num);
+		   };
+
+		   class Vars
+		   {
+		   public:;
+			   static int unsigned ary[3][7];
+			   static HDC colorTable;
+			   class Table
+			   {
+			   public:;
+				   static int unsigned x;
+				   static int unsigned y;
+			   };
+			   static int unsigned windowSizes[2];
+			   static int unsigned tableSizes[2];
+		   };
+	};
+	class Msg
+	{
+	public:;
+		static const char* progName;
+		static const char* scoreMsg;
+	};
 };
 
