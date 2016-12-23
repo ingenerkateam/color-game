@@ -29,7 +29,7 @@ int main()
 
     char mess[100] = "";
     sprintf_s(mess, "Find color in position %d, %d", data::Info::Vars::Table::x + 1, data::Info::Vars::Table::y + 1);
-    txMessageBox (mess, data::Msg::progName);
+    txMessageBox (mess, "Color-Game");
 
     int timeInMils = 0;
 	char messfinish[100] = "";
