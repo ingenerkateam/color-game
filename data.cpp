@@ -23,17 +23,9 @@ int unsigned data::Info::Vars::ary[3][7] = {
 	{ RGB(170,0,255), RGB(244,114,208), RGB(216,0,115)  , RGB(162,0,37)   , RGB(229,20,0)  , RGB(250,104,0), RGB(240,163,10)},
 	{ RGB(227,200,0), RGB(130,90,44)  , RGB(109,135,100), RGB(100,118,135), RGB(118,96,138), RGB(160,82,45), RGB(148,70,34) }
 };
-int unsigned data::Info::Func::rnd(int num)
-{
-	return floor((num * rand()) / RAND_MAX);
-}
-
-int unsigned data::Info::Vars::Table::x = data::Info::Func::rnd(3);
-int unsigned data::Info::Vars::Table::y = data::Info::Func::rnd(7);
 
 int unsigned data::Info::Vars::windowSizes[] = { 400,225 };
 int unsigned data::Info::Vars::tableSizes[] = { data::Info::Vars::windowSizes[0],data::Info::Vars::windowSizes[1] };
 
-HDC data::Info::Vars::colorTable = txLoadImage("colors.bmp");
 const char* data::Msg::progName = "Color-game";
 const char* data::Msg::scoreMsg = "You find it in: %d miliseconds";

@@ -24,11 +24,14 @@ int main()
 {
     txCreateWindow(data::Info::Vars::windowSizes[0], data::Info::Vars::windowSizes[1]);
     
-    txBitBlt(txDC(), 0, 0, data::Info::Vars::tableSizes[0], data::Info::Vars::tableSizes[1], data::Info::Vars::colorTable, 0, 0);
+	int x[2] = {random(3), random(7)};
+
+	HDC colorTable = txLoadImage("colors.bmp");
+    txBitBlt(txDC(), 0, 0, data::Info::Vars::tableSizes[0], data::Info::Vars::tableSizes[1], colorTable, 0, 0);
 	int unsigned color;
 
     char mess[100] = "";
-    sprintf_s(mess, "Find color in position %d, %d", data::Info::Vars::Table::x + 1, data::Info::Vars::Table::y + 1);
+    sprintf_s(mess, "Find color in position %d, %d", x[0] + 1, x[1] + 1);
     txMessageBox (mess, "Color-Game");
 
     int timeInMils = 0;
@@ -37,7 +40,7 @@ int main()
 	while(1)
     {
         color = txGetPixel(txMouseX(),txMouseY());
-        if (color == data::Info::Vars::ary[data::Info::Vars::Table::x][data::Info::Vars::Table::y])
+		if (color == data::Info::Vars::ary[x[0]][x[1]])
         {
             sprintf_s(messfinish, data::Msg::scoreMsg, timeInMils);
             txMessageBox (messfinish, data::Msg::progName);
