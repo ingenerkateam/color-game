@@ -29,3 +29,4 @@ int unsigned data::Info::Vars::tableSizes[] = { data::Info::Vars::windowSizes[0]
 
 const char* data::Msg::progName = "Color-game";
 const char* data::Msg::scoreMsg = "You find it in: %d miliseconds";
+const char* data::Msg::findMe = "Find color in position %d, %d";

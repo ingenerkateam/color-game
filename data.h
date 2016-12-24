@@ -43,6 +43,7 @@ public:
 	public:;
 		static const char* progName;
 		static const char* scoreMsg;
+		static const char* findMe;
 	};
 };
 

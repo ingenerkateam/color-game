@@ -15,24 +15,23 @@
 	You should have received a copy of the GNU General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
+#pragma warning(disable : 4996) 
 #include "TXLib.h"
 #include "stdlib.h"
 #include "data.h"
+#include <iostream>
 
 int main()
 {
     txCreateWindow(data::Info::Vars::windowSizes[0], data::Info::Vars::windowSizes[1]);
-    
-	int x[2] = {random(3), random(7)};
 
 	HDC colorTable = txLoadImage("colors.bmp");
     txBitBlt(txDC(), 0, 0, data::Info::Vars::tableSizes[0], data::Info::Vars::tableSizes[1], colorTable, 0, 0);
 	int unsigned color;
 
     char mess[100] = "";
-    sprintf_s(mess, "Find color in position %d, %d", x[0] + 1, x[1] + 1);
-    txMessageBox (mess, "Color-Game");
+    sprintf(mess, data::Msg::findMe, 1, 2);
+    txMessageBox (mess, data::Msg::progName);
 
     int timeInMils = 0;
 	char messfinish[100] = "";
@@ -40,11 +39,24 @@ int main()
 	while(1)
     {
         color = txGetPixel(txMouseX(),txMouseY());
-		if (color == data::Info::Vars::ary[x[0]][x[1]])
+		if (color == data::Info::Vars::ary[1][2])
         {
-            sprintf_s(messfinish, data::Msg::scoreMsg, timeInMils);
-            txMessageBox (messfinish, data::Msg::progName);
-			exit(0);
+			char mess1[100] = "";
+			sprintf(mess1, data::Msg::findMe, 2, 3);
+			txMessageBox(mess1, data::Msg::progName);
+			color = NULL;
+			while(1)
+			{
+				color = txGetPixel(txMouseX(), txMouseY());
+				if (color == data::Info::Vars::ary[2][3])
+				{
+					sprintf(messfinish, data::Msg::scoreMsg, timeInMils);
+					txMessageBox(messfinish, data::Msg::progName);
+					exit(0);
+				}
+				timeInMils++;
+				txSleep(1);
+			}
         }
 		timeInMils++;
 		txSleep(1);

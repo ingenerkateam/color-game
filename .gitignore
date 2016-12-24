@@ -303,3 +303,5 @@ __pycache__/
 *.exe
 *.out
 *.app
+
+*.sln
