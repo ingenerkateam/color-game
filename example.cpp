@@ -27,38 +27,30 @@ int main()
 
 	HDC colorTable = txLoadImage("colors.bmp");
     txBitBlt(txDC(), 0, 0, data::Info::Vars::tableSizes[0], data::Info::Vars::tableSizes[1], colorTable, 0, 0);
-	int unsigned color;
 
-    char mess[100] = "";
-    sprintf(mess, data::Msg::findMe, 1, 2);
-    txMessageBox (mess, data::Msg::progName);
+	txMessageBox(data::Msg::findMe, data::Msg::progName);
 
-    int timeInMils = 0;
+	int timeInMils = 0;
 	char messfinish[100] = "";
+	COLORREF color;
 
-	while(1)
-    {
-        color = txGetPixel(txMouseX(),txMouseY());
-		if (color == data::Info::Vars::ary[1][2])
-        {
-			char mess1[100] = "";
-			sprintf(mess1, data::Msg::findMe, 2, 3);
-			txMessageBox(mess1, data::Msg::progName);
-			color = NULL;
-			while(1)
+	for (int x = 0; x < 3; x++)
+	{
+		for (int y = 0; y < 7; y++)
+		{
+			while (1)
 			{
 				color = txGetPixel(txMouseX(), txMouseY());
-				if (color == data::Info::Vars::ary[2][3])
+				if (color == data::Info::Vars::ary[x][y])
 				{
-					sprintf(messfinish, data::Msg::scoreMsg, timeInMils);
-					txMessageBox(messfinish, data::Msg::progName);
-					exit(0);
+					break;
 				}
 				timeInMils++;
 				txSleep(1);
 			}
-        }
-		timeInMils++;
-		txSleep(1);
-    }
+		}
+	}
+	sprintf(messfinish, data::Msg::scoreMsg, timeInMils);
+	txMessageBox(messfinish, data::Msg::progName);
+	exit(0);
 }

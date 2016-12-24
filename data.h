@@ -15,7 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
+#pragma warning(disable : 4996) 
 #pragma once
 #include "TXLib.h"
 class data
@@ -28,6 +28,7 @@ public:
 		   {
 		   public:;
 				  static int unsigned rnd(int num);
+				  static void askForColor(int x, int y);
 		   };
 
 		   class Vars
