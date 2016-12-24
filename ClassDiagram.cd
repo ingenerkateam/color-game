@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="data">
+    <Position X="3.25" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="data::Info">
+        <Compartments>
+          <Compartment Name="Nested Types" Collapsed="false" />
+        </Compartments>
+        <NestedTypes>
+          <Class Name="data::Info::Vars">
+            <Compartments>
+              <Compartment Name="Fields" Collapsed="true" />
+            </Compartments>
+            <TypeIdentifier>
+              <NewMemberFileName>data.h</NewMemberFileName>
+            </TypeIdentifier>
+          </Class>
+          <Class Name="data::Info::Func">
+            <Compartments>
+              <Compartment Name="Methods" Collapsed="true" />
+            </Compartments>
+            <TypeIdentifier>
+              <NewMemberFileName>data.h</NewMemberFileName>
+            </TypeIdentifier>
+          </Class>
+        </NestedTypes>
+        <TypeIdentifier>
+          <NewMemberFileName>data.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="data::Msg">
+        <Compartments>
+          <Compartment Name="Fields" Collapsed="true" />
+        </Compartments>
+        <TypeIdentifier>
+          <NewMemberFileName>data.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>data.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
